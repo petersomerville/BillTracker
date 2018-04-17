@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+
+<form action="{{url_for('update_bill_request')}}" method="POST">
+    <div class="form-group row p-3">
+        <input type="hidden" value="{{bill.id}}" name="html_id">
+        <input type="text" value="{{bill.description}}" class="col-6 mr-2" name="html_description" placeholder="Description">
+        <input type="text" value="{{bill.amount}}" class="col-2 mr-2" name="html_amount" placeholder="Amount">
+        <button class="btn btn-primary">Update</button>
+
+    </div>
+</form>
+
+{% endblock %}

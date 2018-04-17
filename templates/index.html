@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+
+<h1 class="mt-3"><a href="{{url_for('index')}}">BillTracker</a></h1>
+
+<form action="{{url_for('add_bill')}}" method="POST">
+    <div class="form-group row p-3">
+        <input type="text" class="col-6 mr-2" name="html_description" placeholder="Description">
+        <input type="text" class="col-2 mr-2" name="html_amount" placeholder="Amount">
+        <button class="btn btn-primary">Add</button>
+
+    </div>
+</form>
+<hr>
+{% for bill in bills %}
+<div class="row">
+    <div class="col-6">{{bill.description}}</div>
+    <div class="col-2">{{bill.amount}}</div>
+    <div class="col-4">
+        <a href="{{url_for('edit_bill', bill_id=bill.id)}}" class="btn btn-warning">Edit</a>
+        <a href="{{url_for('delete_bill_request', bill_id=bill.id)}}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
